@@ -13,17 +13,16 @@ public class Filtro {
 
     private int id;
     private String codigo;
-    private float precio; //Ojo que el precio podría ser un float luego lo cambio...
+    private float precio;
     private String nombre;
     private int cantidad;
     private String tipo;
-    //private int stock;
     private boolean disponibilidad;
 
     //Se crean los constructores, vacíos o con parámetros que permitirán la inicialización del programa con ciertos valores predeterminados...
     public Filtro() {
     }
-
+//rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getBoolean(7)
     public Filtro(int id, String codigo, float precio, String nombre, int cantidad, String tipo, boolean disponibilidad) {
         this.id = id;
         this.codigo = codigo;

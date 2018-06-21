@@ -110,16 +110,8 @@ public class FiltroDao implements metodos<Filtro> {
 
             while (rs.next()) {
                 //nombre, codigo, tipo, cantidad, precio, disponibilidad
+                //nombre, codigo, tipo, cantidad, precio, disponibilidad
                 f = new Filtro(rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getBoolean(7));
-                /*
-                int id; 1
-    private String codigo; 2
-    private float precio; //Ojo que el precio podría ser un float luego lo cambio... 3
-    private String nombre; 4
-    private int cantidad; 5
-    private String tipo; 6
-    private boolean disponibilidad; 7
-                 */
             }
             rs.close();
         } catch (SQLException ex) {

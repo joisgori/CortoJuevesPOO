@@ -165,13 +165,12 @@ public class Consulta extends JFrame {
             }
         };
 
-        tm.addColumn("Codigo");
-        tm.addColumn("Precio");
         tm.addColumn("Nombre");
+        tm.addColumn("Codigo");
         tm.addColumn("Tipo");
-        tm.addColumn("Disponibilidad");
-
         tm.addColumn("Cantidad");
+        tm.addColumn("Precio");
+        tm.addColumn("Disponibilidad");
 
         FiltroDao fd = new FiltroDao();
         ArrayList<Filtro> filtros = fd.readAll();
@@ -179,12 +178,13 @@ public class Consulta extends JFrame {
         for (Filtro fi : filtros) {
             // rs.getString(2), rs.getFloat(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getBoolean(7)
             /*
-               private String codigo; 2
-    private float precio; //Ojo que el precio podría ser un float luego lo cambio... 3
-    private String nombre; 4
-    private int cantidad; 5
-    private String tipo; 6
-    private boolean disponibilidad; 7
+                 /*
+    private String codigo;
+    private float precio; //Ojo que el precio podría ser un float luego lo cambio...
+    private String nombre;
+    private int cantidad;
+    private String tipo;
+    private boolean disponibilidad;
             nombre, codigo, tipo, cantidad, precio, disponibilidad
              */
             tm.addRow(new Object[]{fi.getNombre(), fi.getCodigo(), fi.getTipo(), fi.getCantidad(), fi.getPrecio(), fi.getDisponibilidad()}); //cpdigo, nombre, tipo, cantidad, disponibilidad... y el precio? nel?
