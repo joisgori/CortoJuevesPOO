@@ -109,9 +109,7 @@ public class FiltroDao implements metodos<Filtro> {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                //nombre, codigo, tipo, cantidad, precio, disponibilidad
-                //nombre, codigo, tipo, cantidad, precio, disponibilidad
-                f = new Filtro(rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getBoolean(7));
+                f = new Filtro(rs.getInt(1), rs.getString(3), rs.getFloat(6), rs.getString(2), rs.getInt(5), rs.getString(4), rs.getBoolean(7));
             }
             rs.close();
         } catch (SQLException ex) {
@@ -134,7 +132,7 @@ public class FiltroDao implements metodos<Filtro> {
             rs = s.executeQuery(SQL_READALL);
 
             while (rs.next()) {
-                all.add(new Filtro(rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getBoolean(7)));
+                all.add(new Filtro(rs.getInt(1), rs.getString(3), rs.getFloat(6), rs.getString(2), rs.getInt(5), rs.getString(4), rs.getBoolean(7)));
             }
             rs.close();
         } catch (SQLException ex) {

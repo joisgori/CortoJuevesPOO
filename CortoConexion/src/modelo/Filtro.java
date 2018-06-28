@@ -33,17 +33,17 @@ public class Filtro {
         this.disponibilidad = disponibilidad;
     }
 
-    public Filtro(String codigo, String tipo, int cantidad, boolean disponibilidad) {
+    public Filtro(String nombre, String codigo, String tipo, int cantidad, float precio, boolean disponibilidad) {
+        this.nombre = nombre;
         this.codigo = codigo;
         this.tipo = tipo;
         this.cantidad = cantidad;
+        this.precio = precio;
         this.disponibilidad = disponibilidad;
     }
 
-    public Filtro(String tipo, int cantidad, boolean disponibilidad) {
-        this.tipo = tipo;
-        this.cantidad = cantidad;
-        this.disponibilidad = disponibilidad;
+    public Filtro(String codigo) {
+        this.codigo = codigo;
     }
 
     //Se definen todos los métodos getter...

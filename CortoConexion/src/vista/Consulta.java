@@ -114,9 +114,12 @@ public class Consulta extends JFrame {
         table = new JPanel();
 
         tipo.addItem("Verduras");
+        tipo.addItem("Pan");
+        tipo.addItem("Fruta");
         tipo.addItem("Carne");
         tipo.addItem("Vegetales");
-        tipo.addItem("algomas");
+        tipo.addItem("Bebida");
+        tipo.addItem("Dulces");
 
         disponibilidad = new ButtonGroup();
         disponibilidad.add(si);
@@ -157,9 +160,7 @@ public class Consulta extends JFrame {
                         return String.class;
                     case 4:
                         return String.class;
-                    case 5:
-                        return String.class;
-                    default:
+                    default:        //Esto es pal chekbox
                         return Boolean.class;
                 }
             }
@@ -176,18 +177,7 @@ public class Consulta extends JFrame {
         ArrayList<Filtro> filtros = fd.readAll();
 
         for (Filtro fi : filtros) {
-            // rs.getString(2), rs.getFloat(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getBoolean(7)
-            /*
-                 /*
-    private String codigo;
-    private float precio; //Ojo que el precio podría ser un float luego lo cambio...
-    private String nombre;
-    private int cantidad;
-    private String tipo;
-    private boolean disponibilidad;
-            nombre, codigo, tipo, cantidad, precio, disponibilidad
-             */
-            tm.addRow(new Object[]{fi.getNombre(), fi.getCodigo(), fi.getTipo(), fi.getCantidad(), fi.getPrecio(), fi.getDisponibilidad()}); //cpdigo, nombre, tipo, cantidad, disponibilidad... y el precio? nel?
+            tm.addRow(new Object[]{fi.getNombre(), fi.getCodigo(), fi.getTipo(), fi.getCantidad(), fi.getPrecio(), fi.getDisponibilidad()});
         }
 
         resultados.setModel(tm);
@@ -199,7 +189,7 @@ public class Consulta extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FiltroDao fd = new FiltroDao();
-                Filtro f = new Filtro(codigo.getText(), tipo.getSelectedItem().toString(), Integer.parseInt(cantidad.getText()), true);
+                Filtro f = new Filtro(nombre.getText(), codigo.getText(), tipo.getSelectedItem().toString(), Integer.parseInt(cantidad.getText()), Float.parseFloat(precio.getText()), true);
 
                 if (no.isSelected()) {
                     f.setDisponibilidad(false);
@@ -219,7 +209,7 @@ public class Consulta extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FiltroDao fd = new FiltroDao();
-                Filtro f = new Filtro(codigo.getText(), tipo.getSelectedItem().toString(), Integer.parseInt(cantidad.getText()), true);
+                Filtro f = new Filtro(nombre.getText(), codigo.getText(), tipo.getSelectedItem().toString(), Integer.parseInt(cantidad.getText()), Float.parseFloat(precio.getText()), true);
 
                 if (no.isSelected()) {
                     f.setDisponibilidad(false);
@@ -239,7 +229,7 @@ public class Consulta extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FiltroDao fd = new FiltroDao();
-                Filtro f = new Filtro(codigo.getText(), tipo.getSelectedItem().toString(), Integer.parseInt(cantidad.getText()), true);
+                Filtro f = new Filtro(codigo.getText());
                 if (fd.delete(codigo.getText())) {
                     JOptionPane.showMessageDialog(null, "Filtro eliminado con éxito");
                     limpiarCampos();
@@ -261,6 +251,7 @@ public class Consulta extends JFrame {
 
                     codigo.setText(f.getCodigo());
                     tipo.setSelectedItem(f.getTipo());
+                    nombre.setText(f.getNombre());
                     cantidad.setText(Integer.toString(f.getCantidad()));
 
                     if (f.getDisponibilidad()) {
@@ -281,6 +272,8 @@ public class Consulta extends JFrame {
     }
 
     public void limpiarCampos() {
+        nombre.setText("");
+        precio.setText("");
         codigo.setText("");
         tipo.setSelectedItem("Verduras");
         cantidad.setText("");
